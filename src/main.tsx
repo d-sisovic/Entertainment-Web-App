@@ -1,15 +1,15 @@
-import React from 'react';
-import App from './App.tsx';
-import ReactDOM from 'react-dom/client';
-import Home from './components/home/Home.tsx';
-import { ErrorBoundary } from 'react-error-boundary';
-import Login from './components/auth/login/Login.tsx';
-import { RoutePaths } from './ts/enums/route-paths.enum.ts';
-import Register from './components/auth/register/Register.tsx';
-import NotFoundPage from './components/not-found/NotFoundPage.tsx';
-import { RouterProvider, createHashRouter } from 'react-router-dom';
-import ErrorBoundaryComponent from './components/ui/error-boundary/ErrorBoundaryComponent.tsx';
-import './index.scss';
+import React from "react";
+import App from "./App.tsx";
+import ReactDOM from "react-dom/client";
+import Home from "./components/home/Home.tsx";
+import { ErrorBoundary } from "react-error-boundary";
+import Login from "./components/auth/login/Login.tsx";
+import { RoutePaths } from "./ts/enums/route-paths.enum.ts";
+import Register from "./components/auth/register/Register.tsx";
+import NotFoundPage from "./components/not-found/NotFoundPage.tsx";
+import { RouterProvider, createHashRouter } from "react-router-dom";
+import ErrorBoundaryComponent from "./components/ui/error-boundary/ErrorBoundaryComponent.tsx";
+import "./index.scss";
 
 const routes = [
   {
@@ -44,7 +44,7 @@ const routes = [
 
 const router = createHashRouter(routes);
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
    <RouterProvider router={router} />
   </React.StrictMode>
