@@ -3,8 +3,9 @@ import { useMemo, useState } from "react";
 import logo from "../../../assets/logo.svg";
 import Button from "../../ui/button/Button";
 import { useNavigate } from "react-router-dom";
-import { IFormState } from "./ts/form-state.model";
+import { getNewFormState, isFormInvalid } from "../util";
 import FormHeader from "../../ui/form-header/FormHeader";
+import { ILoginFormState } from "./ts/login-form-state.model";
 import { RoutePaths } from "../../../ts/enums/route-paths.enum";
 
 const initialFormState = {
@@ -14,14 +15,10 @@ const initialFormState = {
 
 const Login = () => {
     const navigate = useNavigate();
-    const [formState, setFormState] = useState<IFormState>(initialFormState);
+    const [formState, setFormState] = useState<ILoginFormState>(initialFormState);
 
     const handleInputChange = (key: string, value: string, isValid: boolean) => {
-        setFormState(previous => ({
-            ...previous,
-            value: { ...previous.value, [key]: value },
-            validity: { ...previous.validity, [key]: isValid }
-        }));
+        setFormState(previous => getNewFormState<ILoginFormState>(previous, key, value, isValid));
     };
 
     const onCreateAccont = () => navigate(`/${RoutePaths.REGISTER}`);
@@ -30,14 +27,12 @@ const Login = () => {
         console.log("ff");
     };
 
-    const isFormInvalid = useMemo(() => Object
-        .values(formState.validity)
-        .some(valid => !valid), [formState.validity]);
+    const formInvalid = useMemo(() => isFormInvalid(formState), [formState]);
 
     return <div className="px-6 pt-12">
         <img src={logo} alt="logo" className="mx-auto mb-[3.625rem]" />
 
-        <div className="bg-semi-dark-blue-c w-[20.438rem] p-6 pt-6 pb-8 rounded-[0.625rem]">
+        <div className="bg-semi-dark-blue-c w-[20.438rem] p-6 pt-6 pb-8 rounded-[0.625rem] mx-auto">
             <FormHeader label="Login"></FormHeader>
 
             <div className='flex flex-col gap-[1.5rem] mb-[2.5rem]'>
@@ -46,7 +41,7 @@ const Login = () => {
                 <Input type="password" name="password" placeholder='Password' handleInputChange={handleInputChange} />
             </div>
 
-            <Button label="Login to your account" disabled={isFormInvalid} handleButtonClick={onFormSubmit}></Button>
+            <Button label="Login to your account" disabled={formInvalid} handleButtonClick={onFormSubmit}></Button>
 
             <p className="mt-[1.5rem] text-center text-white-c text-[0.938rem]/[1.188rem]" onClick={onCreateAccont}>
                 Don't have an account?
