@@ -1,8 +1,11 @@
+import toast from "react-hot-toast";
 import Input from "../../ui/input/Input";
 import { useMemo, useState } from "react";
 import logo from "../../../assets/logo.svg";
 import Button from "../../ui/button/Button";
 import { useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import { loginUser } from "../../../utils/firebase-util";
 import { getNewFormState, isFormInvalid } from "../util";
 import FormHeader from "../../ui/form-header/FormHeader";
 import { ILoginFormState } from "./ts/login-form-state.model";
@@ -14,6 +17,12 @@ const initialFormState = {
 };
 
 const Login = () => {
+    const { mutate: handleLogin } = useMutation({
+        mutationFn: loginUser,
+        onSuccess: () => navigate(`/${RoutePaths.HOME}`),
+        onError: () => toast.error("Incorrect email/password combination. Please try again.")
+    });
+
     const navigate = useNavigate();
     const [formState, setFormState] = useState<ILoginFormState>(initialFormState);
 
@@ -23,11 +32,9 @@ const Login = () => {
 
     const onCreateAccont = () => navigate(`/${RoutePaths.REGISTER}`);
 
-    const onFormSubmit = () => {
-        console.log("ff");
-    };
+    const onFormSubmit = () => handleLogin({ ...formState.value });
 
-    const formInvalid = useMemo(() => isFormInvalid(formState), [formState]);
+    const formInvalid = useMemo(() => isFormInvalid(formState.validity), [formState.validity]);
 
     return <div className="px-6 pt-12">
         <img src={logo} alt="logo" className="mx-auto mb-[3.625rem]" />
