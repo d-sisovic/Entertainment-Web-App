@@ -30,14 +30,14 @@ const Login = () => {
         setFormState(previous => getNewFormState<ILoginFormState>(previous, key, value, isValid));
     };
 
-    const onCreateAccont = () => navigate(`/${RoutePaths.REGISTER}`);
-
     const onFormSubmit = () => handleLogin({ ...formState.value });
+
+    const onCreateAccont = () => navigate(`/${RoutePaths.REGISTER}`); 
 
     const formInvalid = useMemo(() => isFormInvalid(formState.validity), [formState.validity]);
 
     return <div className="px-6 pt-12">
-        <img src={logo} alt="logo" className="mx-auto mb-[3.625rem]" />
+        <img src={logo} alt="logo" className="mx-auto mb-[3.625rem]" data-testid="logo" />
 
         <div className="bg-semi-dark-blue-c w-[20.438rem] p-6 pt-6 pb-8 rounded-[0.625rem] mx-auto">
             <FormHeader label="Login"></FormHeader>

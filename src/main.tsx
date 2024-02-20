@@ -8,6 +8,7 @@ import { RoutePaths } from "./ts/enums/route-paths.enum.ts";
 import Register from "./components/auth/register/Register.tsx";
 import NotFoundPage from "./components/not-found/NotFoundPage.tsx";
 import { RouterProvider, createHashRouter } from "react-router-dom";
+import PrivateRoute from "./components/private-route/PrivateRoute.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ErrorBoundaryComponent from "./components/ui/error-boundary/ErrorBoundaryComponent.tsx";
 import "./index.scss";
@@ -20,7 +21,7 @@ const routes = [
     children: [
       {
         path: RoutePaths.HOME,
-        element: <Home />,
+        element: <PrivateRoute component={<Home />} />,
         // children: [
         //   {
         //     path: RoutePaths.LINK,
@@ -53,4 +54,4 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <RouterProvider router={router} />
     </QueryClientProvider>
   </React.StrictMode>
-)
+);

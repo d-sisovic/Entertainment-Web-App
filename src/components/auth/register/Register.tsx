@@ -79,7 +79,7 @@ const Register = () => {
     };
 
     return <div className="p-6 pt-12">
-        <img src={logo} alt="logo" className="mx-auto mb-[3.625rem]" />
+        <img src={logo} alt="logo" className="mx-auto mb-[3.625rem]" data-testid="logo" />
 
         <div className="bg-semi-dark-blue-c w-[20.438rem] p-6 pt-6 pb-[1.625rem] rounded-[0.625rem] mx-auto">
             <FormHeader label="Sign Up"></FormHeader>
