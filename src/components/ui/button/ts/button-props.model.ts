@@ -1,5 +1,5 @@
 export interface IButtonProps {
     label: string;
-    disabled: boolean;
+    disabled?: boolean;
     handleButtonClick: () => void;
 }

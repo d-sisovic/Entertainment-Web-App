@@ -1,0 +1,13 @@
+$white-filter: invert(99%) sepia(100%) saturate(2%) hue-rotate(178deg) brightness(109%) contrast(100%);
+
+.icons {
+    img {
+        &:hover {
+            filter: $white-filter;
+        }
+    }
+
+    &--active {
+        filter: $white-filter;
+    }
+}
