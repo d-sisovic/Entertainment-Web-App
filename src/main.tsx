@@ -21,17 +21,7 @@ const routes = [
     children: [
       {
         path: RoutePaths.HOME,
-        element: <PrivateRoute component={<Home />} />,
-        // children: [
-        //   {
-        //     path: RoutePaths.LINK,
-        //     element: <LinkWrapper />
-        //   },
-        //   {
-        //     path: RoutePaths.PROFILE,
-        //     element: <Profile />
-        //   }
-        // ]
+        element: <PrivateRoute component={<Home />} />
       },
       {
         path: RoutePaths.LOGIN,

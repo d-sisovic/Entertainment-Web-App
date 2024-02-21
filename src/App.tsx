@@ -1,14 +1,14 @@
 import "./App.scss";
 import auth from "./firebase";
 import { useEffect } from "react";
-import { useUserStore } from "./store";
+import { useAppStore } from "./store";
 import { Outlet } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { IUser } from "./ts/models/user.model";
 import { onAuthStateChanged } from "firebase/auth";
 
 const App = () => {
-  const setUser = useUserStore().setUser;
+  const setUser = useAppStore().user.setUser;
 
   useEffect(() => {
     const subscription = onAuthStateChanged(auth, user => {
