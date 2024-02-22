@@ -32,8 +32,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: []
-- Live Site URL: []
+- Solution URL: [https://www.frontendmentor.io/solutions/entertainment-web-app-reacttailwindtanstack-queryzustand-uoFAdAc-Xu]
+- Live Site URL: [https://d-sisovic.github.io/Entertainment-Web-App/]
 
 ## My process
 
