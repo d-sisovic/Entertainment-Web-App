@@ -33,7 +33,7 @@ const Input = ({ name, type = "text", placeholder, formState, validateValueMessa
             <input type={type} name={name} placeholder={placeholder} onInput={event => onInputChange(event)}
                 className={`caret-red-c w-full text-[0.938rem]/[1.188rem] bg-transparent placeholder-white-c placeholder-opacity-50
             text-white-c px-4 pb-[1.125rem] outline-none border-b-[1px] border-solid border-greyish-blue-c focus:border-white-c 
-            ${errorState.required ? "input--error pr-[7rem]" : ""}`} />
+            ${errorState.required ? "input--error pr-28" : ""}`} />
 
             {errorState.required && <span className="text-red-c text-[0.813rem]/[1rem] absolute right-[1.063rem] top-[2px]">Can't be empty</span>}
         </div>

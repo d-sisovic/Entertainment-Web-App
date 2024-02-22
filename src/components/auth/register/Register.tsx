@@ -9,7 +9,7 @@ import { useEffect, useMemo, useState } from "react";
 import FormHeader from "../../ui/form-header/FormHeader";
 import { RoutePaths } from "../../../ts/enums/route-paths.enum";
 import { IRegisterFormState } from "./ts/register-form-state.model";
-import { checkIfEmailIsTaken, registerUser } from "../../../utils/firebase-util";
+import { checkIfEmailIsTaken, registerUser } from "../../../utils/async-util";
 import { getNewFormState, isFormInvalid, updatePasswordFormState } from "../util";
 
 const initialFormState = {
@@ -78,13 +78,13 @@ const Register = () => {
         handleUserRegistration({ email, password });
     };
 
-    return <div className="p-6 pt-12">
-        <img src={logo} alt="logo" className="mx-auto mb-[3.625rem]" data-testid="logo" />
+    return <div className="p-6 pt-12 tablet:pt-[5.5rem] desktop:pt-[4.906rem]">
+        <img src={logo} alt="logo" className="mx-auto mb-[3.625rem] tablet:mb-[4.525rem] desktop:mb-[5.188rem]" data-testid="logo" />
 
-        <div className="bg-semi-dark-blue-c w-[20.438rem] p-6 pt-6 pb-[1.625rem] rounded-[0.625rem] mx-auto">
+        <div className="bg-semi-dark-blue-c w-[20.438rem] p-6 pt-6 pb-[1.625rem] rounded-[0.625rem] mx-auto tablet:p-8 tablet:w-[25rem]">
             <FormHeader label="Sign Up"></FormHeader>
 
-            <div className='flex flex-col gap-[1.5rem] mb-[2.5rem]'>
+            <div className="flex flex-col gap-6 mb-10 tablet:mb-6">
                 <Input name="email" placeholder="Email address" formState={formState}
                     handleInputChange={handleInputChange} handleValidateValue={validateEmailValue} />
 
@@ -100,10 +100,12 @@ const Register = () => {
             <Button label="Create an account" disabled={formInvalid || userRegistrationPending || emailTaken.inUse}
                 handleButtonClick={onFormSubmit}></Button>
 
-            <p className="mt-[1.5rem] text-center text-white-c text-[0.938rem]/[1.188rem]" onClick={onLogin}>
-                Already have an account?
-                <span className="text-red-c ml-[0.563rem]">Login</span>
-            </p>
+            <div className="text-center mt-6 text-white-c text-[0.938rem]/[1.188rem]">
+                <p className="cursor-pointer inline-block" onClick={onLogin}>
+                    Already have an account?
+                    <span className="text-red-c ml-[0.563rem]">Login</span>
+                </p>
+            </div>
         </div>
     </div>;
 };
