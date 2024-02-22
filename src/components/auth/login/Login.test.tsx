@@ -7,7 +7,7 @@ vi.mock("@tanstack/react-query", () => ({
 }));
 
 describe("Login component", () => {
-    beforeEach(() => render(<MemoryRouter><Login /></MemoryRouter>))
+    beforeEach(() => render(<MemoryRouter><Login /></MemoryRouter>));
 
     it("should render form", () => {
         const logoElement = screen.getByTestId("logo");
