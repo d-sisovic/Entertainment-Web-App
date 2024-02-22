@@ -8,8 +8,8 @@ const BookmarkList = () => {
     const bookmarkedMovies = useMemo(() => movies.filter(movie => movie.category === Category.MOVIE), [movies]);
     const bookmarkedTvSeries = useMemo(() => movies.filter(movie => movie.category === Category.TV_SERIES), [movies]);
 
-    const haveBookmarkedMovies = useMemo(() => !!bookmarkedMovies.length, [bookmarkedMovies.length]);
-    const haveBookmarkedTvSeries = useMemo(() => !!bookmarkedTvSeries.length, [bookmarkedTvSeries.length]);
+    const haveBookmarkedMovies = !!bookmarkedMovies.length;
+    const haveBookmarkedTvSeries = !!bookmarkedTvSeries.length;
 
     return <>
         {!haveBookmarkedMovies && !haveBookmarkedTvSeries && <h1 className="text-[1.25rem]/[1.563rem] text-white-c my-6">No Bookmarked Items</h1>}
