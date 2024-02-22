@@ -13,11 +13,11 @@ const TrendingCard = ({ movie }: IMovieItemProps) => {
     return <div className="group flex flex-col justify-between min-w-[15rem] h-[8.75rem] relative bg-cover rounded-[0.5rem] pt-2 pr-2 pb-4 pl-4
     tablet:min-w-[29.375rem] tablet:h-[14.375rem] tablet:pt-4 tablet:pr-6 tablet:p-8"
         style={{ backgroundImage: `url(${picture})` }}>
+        <Bookmark isBookmarked={movie.isBookmarked} handleBookmarkClick={onToggleBookmark} ></Bookmark>
+
         <div className="opacity-0 group-hover:opacity-100">
             <PlayMovie></PlayMovie>
         </div>
-
-        <Bookmark isBookmarked={movie.isBookmarked} handleBookmarkClick={onToggleBookmark} ></Bookmark>
 
         <div>
             <MovieInfo movie={movie} isTrending={true}></MovieInfo>
