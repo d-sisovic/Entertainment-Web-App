@@ -16,11 +16,12 @@ const Search = ({ filter, isFilterSet }: ISearchProps) => {
     const handleInputDebounced = (event: FormEvent<HTMLInputElement>) => debouncedFn(event);
 
     return <>
-        <div className="my-6 flex items-start justify-between gap-4">
+        <div className="mb-6 flex items-start justify-between gap-4 tablet:gap-6 tablet:mb-[2.063rem]">
             <img src={searchIcon} alt="search" />
 
             <input type="text" name="search" className="bg-transparent outline-none text-[1rem]/[1.875rem] text-white-c flex-1
-        placeholder-white placeholder-opacity-50 caret-red-c focus-within:border-b focus-within:border-b-1 focus-within:greyish-blue-c"
+        placeholder-white placeholder-opacity-50 caret-red-c focus-within:border-b focus-within:border-b-1 focus-within:greyish-blue-c
+        tablet:text-[1.5rem]/[1.875rem]"
                 placeholder={placeholder} onInput={handleInputDebounced} />
         </div>
 

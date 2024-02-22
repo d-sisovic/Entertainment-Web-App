@@ -1,21 +1,15 @@
 import TrendingCard from "./TrendingCard";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { useSelectTrendingMovies } from "../../store";
-import { Navigation, Autoplay, EffectCoverflow } from "swiper/modules";
 
 const Trending = () => {
     const trendingItems = useSelectTrendingMovies();
 
     return <>
-        <h1 className="text-[1.25rem]/[1.563rem] text-white-c mb-4">Trending</h1>
+        <h1 className="text-[1.25rem]/[1.563rem] text-white-c mb-4 tablet:text-[2rem]/[2.5rem] tablet:mb-[1.563rem]">Trending</h1>
 
-        <Swiper modules={[Autoplay, EffectCoverflow, Navigation]} autoplay={{ delay: 3000 }} spaceBetween={-88}>
-            {trendingItems.map(movie => (
-                <SwiperSlide key={movie.title}>
-                    <TrendingCard movie={movie} />
-                </SwiperSlide>
-            ))}
-        </Swiper>
+        <div className="flex gap-4 tablet:gap-10 overflow-x-auto">
+            {trendingItems.map(movie => <TrendingCard movie={movie} key={movie.title} />)}
+        </div>
     </>;
 };
 

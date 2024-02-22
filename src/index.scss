@@ -1,6 +1,5 @@
-@use "swiper/css";
-@use "swiper/css/navigation";
-@use "swiper/css/effect-coverflow";
+@use "./styles/breakpoints";
+@use "./styles/custom-scrollbar";
 
 @tailwind base;
 @tailwind components;

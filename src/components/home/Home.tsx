@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import Header from "../header/Header";
+import styles from "./Home.module.scss";
 import Search from "../ui/search/Search";
 import Loading from "../ui/loading/Loading";
 import Trending from "../trending/Trending";
 import MixedList from "../mixed-list/MixedList";
 import { useQuery } from "@tanstack/react-query";
-import { fetchMovies } from "../../utils/fetch-util";
+import { fetchMovies } from "../../utils/async-util";
 import { Category } from "../../ts/enums/category.enum";
 import BookmarkList from "../bookmark-list/BookmarkList";
 import { ReactQuery } from "../../ts/enums/react-query.enum";
@@ -26,10 +27,10 @@ const Home = () => {
 
     if (!movies.length) { return <Loading></Loading>; }
 
-    return <>
+    return <div className="desktop:flex flex-row gap-9">
         <Header></Header>
 
-        <div className="my-6 mx-4">
+        <div className={`mx-4 tablet:mx-[1.531rem] desktop:mx-0 desktop:mt-16 desktop:flex-1 ${styles.content}`}>
             <Search isFilterSet={isFilterSet} filter={filter}></Search>
 
             {!isFilterSet && showTrending && <Trending></Trending>}
@@ -38,7 +39,7 @@ const Home = () => {
 
             {category === Category.BOOKMARK && <BookmarkList></BookmarkList>}
         </div>
-    </>;
+    </div>
 };
 
 export default Home;

@@ -1,0 +1,8 @@
+@use "../../styles/breakpoints";
+
+@include breakpoints.mq(desktop) {
+    .content {
+        overflow: hidden;
+        max-width: calc(100vw - 164px);
+    }
+}
