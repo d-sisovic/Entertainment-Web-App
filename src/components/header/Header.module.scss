@@ -1,10 +1,8 @@
 @use "../../styles/breakpoints";
 
-$white-filter: invert(99%) sepia(100%) saturate(2%) hue-rotate(178deg) brightness(109%) contrast(100%);
-
 .icon-style {
     cursor: pointer;
-    filter: $white-filter;
+    filter: invert(99%) sepia(100%) saturate(2%) hue-rotate(178deg) brightness(109%) contrast(100%);
 }
 
 .icons {
